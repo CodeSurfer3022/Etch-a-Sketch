@@ -9,32 +9,52 @@ html {
 
 body {
     height: 100%;
+    display: grid;
+    grid-template-rows: 1fr 4fr 1fr;
+    grid-template-areas: "header"
+                         "main"
+                         "footer";
+}
+
+header {
+    background-color: pink;
+    grid-area: header;
 }
 
 main {
-    height: 80%;
-    width: 80%;
+    grid-area: main;
     background-color: aliceblue;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-areas: "options slate pens";
+}
+
+#options {
+    background-color: powderblue;
 }
 
 #container {
-    height: 90%;
-    width: 90%;
+    grid-area: slate;
     background-color: blueviolet;
 }
 
+#pens {
+    grid-area: pens;
+    display: grid;
+    grid-template-rows: 1fr 5fr;
+    grid-template-areas: "colorpicker"
+                         "thickness"   ;
+    background-color: rebeccapurple;
+}
+
 #grid {
-    height: 90%;
-    width: 90%;
+    height: 100%;
+    width: 100%;
     background-color: cornflowerblue;
 }
 
-li {
-    display: inline;
+
+footer {
+    grid-area: footer;
+    background-color: plum;
 }
