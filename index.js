@@ -22,23 +22,38 @@ for (let i = 0; i < size; i ++) {
     }
 }
 
+let red = 255;
+let green = 255;
+let blue = 255;
 
 function colorDiv(e) {
     // console.log('working');
     if(mode === "normal") {
         e.target.style.backgroundColor = "red";
-    } else {
-        red = Math.floor(Math.random() * 256)
-        green = Math.floor(Math.random() * 256)
-        blue = Math.floor(Math.random() * 256)
+    } else if(mode === "ludicrous") {
+        red = Math.floor(Math.random() * 256);
+        green = Math.floor(Math.random() * 256);
+        blue = Math.floor(Math.random() * 256);
         console.log(red, green, blue);
-        e.target.style.backgroundColor = `rgb(${red},${green},${blue})`;
+        e.target.style.backgroundColor = `rgba(${red},${green},${blue}, ${a})`;
+    } else if(mode === "darken") {
+        red --;
+        green --;
+        blue --;
+
+        e.target.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+    } else {
+        red ++;
+        green ++;
+        blue ++;
+
+        e.target.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
     }
 }
 
 mode = "normal"
 const divs = document.querySelectorAll('.divs');
-divs.forEach( div => div.addEventListener('mouseover', colorDiv, mode) );
+divs.forEach( div => div.addEventListener('mouseover', colorDiv) );
 
 function resetGrid() {
     // console.log("clicked");
@@ -51,3 +66,18 @@ reset.addEventListener('click', resetGrid);
 let ludicrous = document.querySelector('#ludicrous');
 ludicrous.addEventListener('click', () => {mode = "ludicrous"});
 
+let darken = document.querySelector('#darken');
+darken.addEventListener('click', () => {
+    mode= "darken";
+    red = 255;
+    green = 255;
+    blue = 255;
+});
+
+let lighten = document.querySelector('#lighten');
+lighten.addEventListener('click', () => {
+    mode= "lighten";
+    red = 0;
+    green = 0;
+    blue = 0;
+});
