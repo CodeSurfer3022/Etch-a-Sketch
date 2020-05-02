@@ -1,5 +1,7 @@
 let size = 64;
 
+const pens = document.querySelectorAll('#pens img');
+console.log(pens);
 const main = document.querySelector('main');
 const container = document.createElement('div');
 container.setAttribute('id', 'container');
@@ -81,3 +83,4 @@ lighten.addEventListener('click', () => {
     green = 0;
     blue = 0;
 });
+

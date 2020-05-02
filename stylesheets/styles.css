@@ -38,7 +38,7 @@ main {
     background-color: blueviolet;
 }
 
-#pens {
+#color-thickness {
     grid-area: pens;
     display: grid;
     grid-template-rows: 1fr 5fr;
@@ -47,15 +47,15 @@ main {
     background-color: rebeccapurple;
 }
 
-#color {
+#color-picker {
     grid-area: "colorpicker";
 }
 
-#thickness {
+#pen-picker {
     grid-area: "thickness";
 }
 
-#pen img {
+#pens img {
     height: 200px;
 }
 
