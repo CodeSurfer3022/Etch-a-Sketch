@@ -55,8 +55,8 @@ main {
     grid-area: "thickness";
 }
 
-canvas {
-    border-radius: 50%;
+#pen img {
+    height: 200px;
 }
 
 #grid {
