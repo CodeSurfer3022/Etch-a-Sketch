@@ -3,7 +3,7 @@
 // global variables at top with default values
 
 // Size of grids
-let size = 32;
+let size = 16;
 
 // Mode of colorDiv
 let mode = "normal"
@@ -22,7 +22,7 @@ function setSize() {
 function colorDiv(e) {
     switch(mode) {
         case "normal":
-            e.target.style.backgroundColor = "red";
+            e.target.style.backgroundColor = `rgb(${red},${green},${blue})`;
             break;
 
         case "ludicrous":
@@ -51,8 +51,19 @@ function colorDiv(e) {
 }
     
 function resetGrid() {
-    // console.log("clicked");
+    // Reset the screen area to default color
     divs.forEach(div => div.style.backgroundColor = "cornflowerblue");
+
+    // Reset all global values to default
+    size = 16;
+
+    // Mode of colorDiv
+    mode = "normal"
+
+    // Color components
+    red = 255;
+    green = 255;
+    blue = 255;
 }    
 
 // Add a container to main 
