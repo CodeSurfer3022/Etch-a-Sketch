@@ -1,7 +1,62 @@
-let size = 64;
+/////////////////////////////////////////////////////////////////////////////////////
 
-const pens = document.querySelectorAll('#pens img');
-console.log(pens);
+// global variables at top with default values
+
+// Size of grids
+let size = 32;
+
+// Mode of colorDiv
+let mode = "normal"
+
+// Color components
+let red = 255;
+let green = 255;
+let blue = 255;
+
+/////////////////////////////////////////////////////////////////////////////////////
+
+function setSize() {
+
+}
+
+function colorDiv(e) {
+    switch(mode) {
+        case "normal":
+            e.target.style.backgroundColor = "red";
+            break;
+
+        case "ludicrous":
+            red = Math.floor(Math.random() * 256);
+            green = Math.floor(Math.random() * 256);
+            blue = Math.floor(Math.random() * 256);
+            console.log(red, green, blue);
+            e.target.style.backgroundColor = `rgb(${red},${green},${blue})`;
+            break;
+        
+        case "darken":
+            console.log("entered here");
+            red --;
+            green --;
+            blue --;
+            e.target.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+            break;
+
+        case "lighten":
+            red ++;
+            green ++;
+            blue ++;
+            e.target.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+            break;
+    }
+}
+    
+function resetGrid() {
+    // console.log("clicked");
+    divs.forEach(div => div.style.backgroundColor = "cornflowerblue");
+}    
+
+// Add a container to main 
+// Add the grid to container
 const main = document.querySelector('main');
 const container = document.createElement('div');
 container.setAttribute('id', 'container');
@@ -24,43 +79,14 @@ for (let i = 0; i < size; i ++) {
     }
 }
 
-let red = 255;
-let green = 255;
-let blue = 255;
+const pens = document.querySelectorAll('#pens img');
+pens.forEach(pen => {
+    pen.addEventListener('click', setSize)
+});
+console.log(pens);
 
-function colorDiv(e) {
-    // console.log('working');
-    if(mode === "normal") {
-        e.target.style.backgroundColor = "red";
-    } else if(mode === "ludicrous") {
-        red = Math.floor(Math.random() * 256);
-        green = Math.floor(Math.random() * 256);
-        blue = Math.floor(Math.random() * 256);
-        console.log(red, green, blue);
-        e.target.style.backgroundColor = `rgb(${red},${green},${blue})`;
-    } else if(mode === "darken") {
-        red --;
-        green --;
-        blue --;
-
-        e.target.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
-    } else {
-        red ++;
-        green ++;
-        blue ++;
-
-        e.target.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
-    }
-}
-
-mode = "normal"
 const divs = document.querySelectorAll('.divs');
 divs.forEach( div => div.addEventListener('mouseover', colorDiv) );
-
-function resetGrid() {
-    // console.log("clicked");
-    divs.forEach(div => div.style.backgroundColor = "cornflowerblue");
-}
 
 let reset = document.querySelector('#reset');
 reset.addEventListener('click', resetGrid);
