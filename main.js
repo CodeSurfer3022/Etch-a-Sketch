@@ -8,12 +8,22 @@ let size = 16;
 // Mode of colorDiv
 let mode = "normal"
 
+// grid default color
+let gridDefaultColor = "cornflowerblue";
+
 // Color components
 let red = 255;
 let green = 255;
 let blue = 255;
 
 /////////////////////////////////////////////////////////////////////////////////////
+function changeColor(e) {
+    const selectedColor = e.target.value;
+    red = parseInt(selectedColor.slice(1,3), 16);
+    green = parseInt(selectedColor.slice(3,5), 16);
+    blue = parseInt(selectedColor.slice(5,7), 16);
+    // console.log(red, green, blue);
+}
 
 function setSize() {
 
@@ -52,7 +62,7 @@ function colorDiv(e) {
     
 function resetGrid() {
     // Reset the screen area to default color
-    divs.forEach(div => div.style.backgroundColor = "cornflowerblue");
+    divs.forEach(div => div.style.backgroundColor = gridDefaultColor);
 
     // Reset all global values to default
     size = 16;
@@ -90,11 +100,14 @@ for (let i = 0; i < size; i ++) {
     }
 }
 
+const colorPicker = document.querySelector('#penColor');
+console.log(colorPicker.value);
+colorPicker.addEventListener('change', changeColor);
+
 const pens = document.querySelectorAll('#pens img');
 pens.forEach(pen => {
     pen.addEventListener('click', setSize)
 });
-console.log(pens);
 
 const divs = document.querySelectorAll('.divs');
 divs.forEach( div => div.addEventListener('mouseover', colorDiv) );
@@ -106,18 +119,10 @@ let ludicrous = document.querySelector('#ludicrous');
 ludicrous.addEventListener('click', () => {mode = "ludicrous"});
 
 let darken = document.querySelector('#darken');
-darken.addEventListener('click', () => {
-    mode= "darken";
-    red = 255;
-    green = 255;
-    blue = 255;
-});
+darken.addEventListener('click', () => mode= "darken");
 
 let lighten = document.querySelector('#lighten');
-lighten.addEventListener('click', () => {
-    mode= "lighten";
-    red = 0;
-    green = 0;
-    blue = 0;
-});
+lighten.addEventListener('click', () => mode= "lighten");
+
+
 
