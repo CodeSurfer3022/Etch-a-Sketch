@@ -47,6 +47,18 @@ main {
     background-color: rebeccapurple;
 }
 
+#color {
+    grid-area: "colorpicker";
+}
+
+#thickness {
+    grid-area: "thickness";
+}
+
+canvas {
+    border-radius: 50%;
+}
+
 #grid {
     height: 100%;
     width: 100%;

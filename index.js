@@ -35,7 +35,7 @@ function colorDiv(e) {
         green = Math.floor(Math.random() * 256);
         blue = Math.floor(Math.random() * 256);
         console.log(red, green, blue);
-        e.target.style.backgroundColor = `rgba(${red},${green},${blue}, ${a})`;
+        e.target.style.backgroundColor = `rgb(${red},${green},${blue})`;
     } else if(mode === "darken") {
         red --;
         green --;
