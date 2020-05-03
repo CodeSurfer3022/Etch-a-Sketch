@@ -25,8 +25,41 @@ function changeColor(e) {
     // console.log(red, green, blue);
 }
 
-function setSize() {
+function setSize(e) {
+    currentSize = size;
+    size= e.toElement.id;
+    console.log(currentSize);
+    console.log(size);
+    redrawGrid(currentSize, size);
+}
 
+// function redrawGrid(currentSize, size) {
+//     console.log("redrawing grid")
+//     for (let i = 0; i < currentSize; i ++) {
+//         for (let j = 0; j < currentSize; j ++) {
+//             console.log(grid);
+//             grid.removeChild('div');
+//          }
+//     }
+// }
+
+function drawGrid(size) {
+    const grid = document.createElement('div');
+    // grid.textContent = 'this is a grid';
+    grid.style.cssText = `display: grid;
+                      grid-template: repeat(${size}, 1fr) / repeat(${size}, 1fr);`;            
+    grid.setAttribute('id', 'grid'); 
+    console.log("drawing grid");
+    // add a div for each grid(and assign it to each grid area too)
+    for (let i = 0; i < size; i ++) {
+        for (let j = 0; j < size; j ++) {
+            let tmpDiv = document.createElement('div');
+            tmpDiv.style.cssText = 'grid-area: i/ j/ i + 1/ j + 1;'
+            tmpDiv.classList.add('divs');
+            grid.appendChild(tmpDiv);
+        }
+    }
+    container.appendChild(grid);
 }
 
 function colorDiv(e) {
@@ -74,6 +107,8 @@ function resetGrid() {
     red = 255;
     green = 255;
     blue = 255;
+
+    colorPicker.value = `#${red.toString(16)}${green.toString(16)}${blue.toString(16)}`;
 }    
 
 // Add a container to main 
@@ -81,24 +116,8 @@ function resetGrid() {
 const main = document.querySelector('main');
 const container = document.createElement('div');
 container.setAttribute('id', 'container');
-grid = document.createElement('div');
-// grid.textContent = 'this is a grid';
-grid.style.cssText = `display: grid;
-                      grid-template: repeat(${size}, 1fr) / repeat(${size}, 1fr);
-                      `;            
-grid.setAttribute('id', 'grid'); 
-container.appendChild(grid);
+drawGrid(size);
 main.appendChild(container)
-
-// add a div for each grid(and assign it to each grid area too)
-for (let i = 0; i < size; i ++) {
-    for (let j = 0; j < size; j ++) {
-        let tmpDiv = document.createElement('div');
-        tmpDiv.style.cssText = 'grid-area: i/ j/ i + 1/ j + 1;'
-        tmpDiv.classList.add('divs');
-        grid.appendChild(tmpDiv);
-    }
-}
 
 const colorPicker = document.querySelector('#penColor');
 console.log(colorPicker.value);
