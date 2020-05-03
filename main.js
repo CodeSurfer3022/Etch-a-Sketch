@@ -9,11 +9,11 @@ let size = 16;
 let mode = "normal"
 
 // grid default color
-let gridDefaultColor = "cornflowerblue";
+let gridDefaultColor = "whitesmoke";
 
 // Color components
-let red = 255;
-let green = 255;
+let red = 19;
+let green = 34;
 let blue = 255;
 
 /////////////////////////////////////////////////////////////////////////////////////
@@ -84,6 +84,22 @@ function colorDiv(e) {
     }
 }
     
+function togglePainting(e) {
+    let key = e.key;
+    if(key != 's' && key != 'p') 
+        return 
+    
+    console.log(e);
+    const divs = document.querySelectorAll('.divs');
+
+    if (key === 's') {
+        divs.forEach( div => div.removeEventListener('mouseover', colorDiv) );
+    } else if (key === 'p') {
+        divs.forEach( div => div.addEventListener('mouseover', colorDiv) );
+    }
+
+}
+
 function resetGrid() {
     // Reset the screen area to default color
     const divs = document.querySelectorAll('.divs');
@@ -96,8 +112,8 @@ function resetGrid() {
     mode = "normal"
 
     // Color components
-    red = 255;
-    green = 255;
+    red = 19;
+    green = 34;
     blue = 255;
 
     const colorPicker = document.querySelector('#penColor');
@@ -128,6 +144,8 @@ function addEventListeners() {
 
     const lighten = document.querySelector('#lighten');
     lighten.addEventListener('click', () => mode= "lighten");
+
+    document.addEventListener('keydown', togglePainting);
 }
 ///////////////////////////////////////////////////////////////////////////////////////////
 // Code begins here
