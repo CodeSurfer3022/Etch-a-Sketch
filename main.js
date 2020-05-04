@@ -114,21 +114,10 @@ function togglePainting(e) {
 
 }
 
-function resetGrid() {
-    // Reset the screen area to default color
+function clearGrid() {
+    // Clear the screen area to draw fresh
     const divs = document.querySelectorAll('.divs');
     divs.forEach(div => div.style.backgroundColor = gridDefaultColor);
-
-    // Reset all global values to default
-    size = 16;
-
-    // Mode of colorDiv
-    mode = "normal"
-
-    // Color components
-    red = 19;
-    green = 34;
-    blue = 255;
 
     defaultSelections();
 }    
@@ -146,8 +135,8 @@ function addEventListeners() {
     const divs = document.querySelectorAll('.divs');
     divs.forEach( div => div.addEventListener('mouseover', colorDiv) );
 
-    const reset = document.querySelector('#reset');
-    reset.addEventListener('click', resetGrid);
+    const clear = document.querySelector('#clear-screen');
+    clear.addEventListener('click', clearGrid);
 
     const ludicrous = document.querySelector('#ludicrous');
     ludicrous.addEventListener('click', () => {mode = "ludicrous"});
