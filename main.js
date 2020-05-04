@@ -119,6 +119,7 @@ function clearGrid() {
     const divs = document.querySelectorAll('.divs');
     divs.forEach(div => div.style.backgroundColor = gridDefaultColor);
 
+    mode = "normal";
     defaultSelections();
 }    
 
