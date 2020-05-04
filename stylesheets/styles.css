@@ -60,16 +60,19 @@ button {
 button:hover {
     cursor: pointer;
     box-shadow: 0 0 10px 2px hotpink;
-
 }
 
 button:focus {
     outline: none;
-    box-shadow: 0 0 10px 2px hotpink;
 }
 
-#clear-screen:focus{
-    box-shadow: none;
+/* #ludicrous:focus, #darken:focus, #lighten:focus {
+    outline: none;
+    box-shadow: 0 0 10px 2px hotpink;
+} */
+
+#clear-screen:focus {
+    outline: none;
 }
 
 #container {
@@ -165,7 +168,7 @@ footer p {
     color: rebeccapurple;
 }
 
-.selectedInfo {
+.selected-info {
     transform: scale(1.5);
     text-shadow:3px 3px 1px rgb(219, 114, 211);
     overflow: hidden;
@@ -175,4 +178,9 @@ footer p {
     transform: scale(1.2);
     transform: ;
     overflow: hidden;
+}
+
+.selected-button {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px 2px hotpink;
 }
