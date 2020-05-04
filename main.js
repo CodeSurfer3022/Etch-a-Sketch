@@ -86,15 +86,24 @@ function colorDiv(e) {
     
 function togglePainting(e) {
     let key = e.key;
-    if(key != 's' && key != 'p') 
+    if(key != 's' && key != 'd') 
         return 
     
-    console.log(e);
+    const otherKey = key === 's' ? 'd' : 's';
+
     const divs = document.querySelectorAll('.divs');
+    const info = document.querySelector(`#${key}`);
+    const disableInfo = document.querySelector(`#${otherKey}`);
+    
+    info.classList.add('selected');
+    const exists = disableInfo.getAttribute('class');
+    if (exists)
+        disableInfo.classList.remove('selected');
 
     if (key === 's') {
         divs.forEach( div => div.removeEventListener('mouseover', colorDiv) );
-    } else if (key === 'p') {
+        
+    } else if (key === 'd') {
         divs.forEach( div => div.addEventListener('mouseover', colorDiv) );
     }
 
