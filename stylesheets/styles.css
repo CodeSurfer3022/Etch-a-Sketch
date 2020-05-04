@@ -161,7 +161,7 @@ footer p {
     color: rebeccapurple;
 }
 
-.selected {
+.selectedInfo {
     transform: scale(1.5);
     text-shadow:3px 3px 1px rgb(219, 114, 211);
     overflow: hidden;

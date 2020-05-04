@@ -27,7 +27,6 @@ function changeColor(e) {
 
 function changeSize(e) {
     size= e.toElement.id;
-    console.log(size);
     let oldGrid = document.querySelector('#grid');
     container.removeChild(oldGrid);
     drawGrid(size);
@@ -51,6 +50,12 @@ function drawGrid(size) {
         }
     }
     container.appendChild(grid);
+    defaultSelections();
+}
+
+function defaultSelections() {
+    const colorPicker = document.querySelector('#penColor');
+    colorPicker.value = `#${red.toString(16)}${green.toString(16)}${blue.toString(16)}`;
 }
 
 function colorDiv(e) {
@@ -95,10 +100,10 @@ function togglePainting(e) {
     const info = document.querySelector(`#${key}`);
     const disableInfo = document.querySelector(`#${otherKey}`);
     
-    info.classList.add('selected');
+    info.classList.add('selectedInfo');
     const exists = disableInfo.getAttribute('class');
     if (exists)
-        disableInfo.classList.remove('selected');
+        disableInfo.classList.remove('selectedInfo');
 
     if (key === 's') {
         divs.forEach( div => div.removeEventListener('mouseover', colorDiv) );
@@ -125,8 +130,7 @@ function resetGrid() {
     green = 34;
     blue = 255;
 
-    const colorPicker = document.querySelector('#penColor');
-    colorPicker.value = `#${red.toString(16)}${green.toString(16)}${blue.toString(16)}`;
+    defaultSelections();
 }    
 
 function addEventListeners() {
