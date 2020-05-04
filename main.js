@@ -8,6 +8,9 @@ let size = 16;
 // Mode of colorDiv
 let mode = "normal"
 
+// Mode of painting
+let paintMode = "selection"
+
 // grid default color
 let gridDefaultColor = "whitesmoke";
 
@@ -22,7 +25,6 @@ function changeColor(e) {
     red = parseInt(selectedColor.slice(1,3), 16);
     green = parseInt(selectedColor.slice(3,5), 16);
     blue = parseInt(selectedColor.slice(5,7), 16);
-    console.log(red, green, blue);
 }
 
 function changeSize(e) {
@@ -30,6 +32,7 @@ function changeSize(e) {
     let oldGrid = document.querySelector('#grid');
     container.removeChild(oldGrid);
     drawGrid(size);
+    defaultSelections();
     addEventListeners();
 }
 
@@ -50,13 +53,33 @@ function drawGrid(size) {
         }
     }
     container.appendChild(grid);
-    defaultSelections();
 }
 
 function defaultSelections() {
-    const colorPicker = document.querySelector('#penColor');
-    colorPicker.value = `#${red.toString(16)}${green.toString(16)}${blue.toString(16)}`;
+    // const colorPicker = document.querySelector('#penColor');
+    // colorPicker.value = `#${red.toString(16)}${green.toString(16)}${blue.toString(16)}`;
+
+    const pens = document.querySelectorAll('#pens img');
+    pens.forEach(pen => {
+        if (pen.getAttribute('class') === 'selected-pen') {
+            pen.removeAttribute('class');
+        }
+    })
+
+    const selectedPen = document.querySelector(`#pens img[id = '${size}']`);
+    selectedPen.classList.add('selected-pen');
+
+    const key = paintMode === 'selection' ? 's' : 'd';
+    const otherKey = key === 's' ? 'd' : 's';
+    const info = document.querySelector(`#${key}`);
+    const disableInfo = document.querySelector(`#${otherKey}`);
+    
+    info.classList.add('selectedInfo');
+    const exists = disableInfo.getAttribute('class');
+    if (exists)
+        disableInfo.classList.remove('selectedInfo');
 }
+
 
 function colorDiv(e) {
     switch(mode) {
@@ -68,12 +91,10 @@ function colorDiv(e) {
             red = Math.floor(Math.random() * 256);
             green = Math.floor(Math.random() * 256);
             blue = Math.floor(Math.random() * 256);
-            console.log(red, green, blue);
             e.target.style.backgroundColor = `rgb(${red},${green},${blue})`;
             break;
         
         case "darken":
-            console.log("entered here");
             red --;
             green --;
             blue --;
@@ -106,12 +127,13 @@ function togglePainting(e) {
         disableInfo.classList.remove('selectedInfo');
 
     if (key === 's') {
+        paintMode = "selection";
         divs.forEach( div => div.removeEventListener('mouseover', colorDiv) );
         
     } else if (key === 'd') {
+        paintMode = "draw";
         divs.forEach( div => div.addEventListener('mouseover', colorDiv) );
     }
-
 }
 
 function clearGrid() {
@@ -125,16 +147,12 @@ function clearGrid() {
 
 function addEventListeners() {
     const colorPicker = document.querySelector('#penColor');
-    console.log(colorPicker.value);
     colorPicker.addEventListener('change', changeColor);
 
     const pens = document.querySelectorAll('#pens img');
     pens.forEach(pen => {
         pen.addEventListener('click', changeSize)
     });
-
-    const divs = document.querySelectorAll('.divs');
-    divs.forEach( div => div.addEventListener('mouseover', colorDiv) );
 
     const clear = document.querySelector('#clear-screen');
     clear.addEventListener('click', clearGrid);
@@ -162,9 +180,8 @@ main.appendChild(container);
 
 // Draw the initial grid
 drawGrid(size);
-
+defaultSelections();
 addEventListeners();
-
 
 
 

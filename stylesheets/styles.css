@@ -170,3 +170,9 @@ footer p {
     text-shadow:3px 3px 1px rgb(219, 114, 211);
     overflow: hidden;
 }
+
+.selected-pen {
+    transform: scale(1.2);
+    transform: ;
+    overflow: hidden;
+}
