@@ -12,7 +12,7 @@ let mode = "normal"
 let paintMode = "selection"
 
 // grid default color
-let gridDefaultColor = "whitesmoke";
+let gridDefaultColor = "aliceblue";
 
 // Color components
 let red = 19;
