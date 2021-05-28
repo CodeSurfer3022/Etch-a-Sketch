@@ -1,53 +1,57 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Etch-A-Sketch | Seawee games</title>
-        <link rel="stylesheet" href="stylesheets/reset.css" type="text/css"/>
-        <link rel="stylesheet" href="stylesheets/styles.css" type="text/css"/>
-        <link rel="icon" href="assets/images/icon.png"/>
-    </head>
-    <body>
-        <header>
-            <h1>Etch-A-Sketch</h1>
-        </header>
-        <main>
-            <div id="options">
-                <div>
-                    <button id="clear-screen" name="clear-screen">Clear screen</button>
-                </div>
-                <div>
-                    <button id="normal" name="normal">Normal</button>
-                </div>
-                <div>
-                    <button id="ludicrous" name="ludicrous">Ludicrous</button>
-                </div>
-                <div>
-                    <button id="darken" name="darken">Darken</button>
-                </div>
-                <div>
-                    <button id="lighten" name="lighten">Lighten</button>
-                </div>
-            </div>
-            <div id="color-thickness">
-                <div id="color-picker">
-                    <label for="penColor">Color picker</label>
-                    <input type="color" id="penColor" name="penColor" value="#1322ff"/>
-                </div>
-                <div id="pen-picker">
-                    <div id="pens">
-                        <img id="128" src="assets/images/pens/pen128.png"/>
-                        <img id="64" src="assets/images/pens/pen64.png"/>
-                        <img id="32" src="assets/images/pens/pen32.png"/>
-                        <img id="16" src="assets/images/pens/pen16.png"/>
-                    </div>
-                </div>
-            </div>
-        </main>
-        <footer>
-            <p id="s">S for selection mode</p>
-            <p id="d">D for draw mode</p>
-        </footer>
-        <script src="main.js"></script>
-    </body>
+<html lang="en-us">
+<head>
+    <meta charset="UTF-8">
+    <title>Etch-A-Sketch</title>
+    <link rel="stylesheet" href="stylesheets/styles.css" type="text/css"/>
+    <link rel="icon" href="assets/images/icon.png"/>
+</head>
+<body>
+<header>
+    <h1>Yippie Sketcher</h1>
+</header>
+<main>
+<!--    <div id="options">-->
+<!--        <div>-->
+<!--            <button id="clear-screen" name="clear-screen">Clear screen</button>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--            <button id="normal" name="normal">Normal</button>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--            <button id="ludicrous" name="ludicrous">Ludicrous</button>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--            <button id="darken" name="darken">Darken</button>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--            <button id="lighten" name="lighten">Lighten</button>-->
+<!--        </div>-->
+<!--    </div>-->
+    <div class="screen-container">
+        <div class="screen">
+
+        </div>
+    </div>
+<!--    <div id="color-thickness">-->
+<!--        <div id="color-picker">-->
+<!--            <label for="penColor">Color picker</label>-->
+<!--            <input type="color" id="penColor" name="penColor" value="#1322ff"/>-->
+<!--        </div>-->
+<!--        <div id="pen-picker">-->
+<!--            <div id="pens">-->
+<!--                <img id="128" src="assets/images/pens/pen128.png"/>-->
+<!--                <img id="64" src="assets/images/pens/pen64.png"/>-->
+<!--                <img id="32" src="assets/images/pens/pen32.png"/>-->
+<!--                <img id="16" src="assets/images/pens/pen16.png"/>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+</main>
+<footer>
+    <p id="s">S for selection mode</p>
+    <p id="d">D for draw mode</p>
+</footer>
+<script src="main.js"></script>
+</body>
 </html>
