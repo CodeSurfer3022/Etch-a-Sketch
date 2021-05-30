@@ -70,23 +70,9 @@ function changeMode(e) {
     btn.classList.add('selected-button');
 }
 
-function drawGrid(size) {
-    const grid = document.createElement('div');
-    grid.style.cssText = `display: grid;
-                      grid-template: repeat(${size}, 1fr) / repeat(${size}, 1fr);`;            
-    grid.setAttribute('id', 'grid'); 
+function styleCanvas(canvas, size) {
+    canvas.style.cssText = `grid-template: repeat(${size}, 1fr) / repeat(${size}, 1fr);`;
     console.log("drawing grid");
-
-    // add a div for each grid(and assign it to each grid area too)
-    for (let i = 0; i < size; i ++) {
-        for (let j = 0; j < size; j ++) {
-            let tmpDiv = document.createElement('div');
-            tmpDiv.style.cssText = 'grid-area: i/ j/ i + 1/ j + 1;'
-            tmpDiv.classList.add('divs');
-            grid.appendChild(tmpDiv);
-        }
-    }
-    container.appendChild(grid);
 }
 
 function defaultSelections() {
@@ -107,7 +93,7 @@ function defaultSelections() {
     const otherKey = key === 's' ? 'd' : 's';
     const info = document.querySelector(`#${key}`);
     const disableInfo = document.querySelector(`#${otherKey}`);
-    
+
     info.classList.add('selected-info');
     const exists = disableInfo.getAttribute('class');
     if (exists)
@@ -126,16 +112,16 @@ function colorDiv(e) {
             green = Math.floor(Math.random() * 256);
             blue = Math.floor(Math.random() * 256);
             e.target.style.backgroundColor = `rgb(${red},${green},${blue})`;
-            
+
             changeColorPicker(red, green, blue);
             break;
-        
+
         case "darken":
             red = red - 1 > 0 ? red - 1 : 0;
             green = green - 1 > 0 ? green - 1 : 0;
             blue = blue - 1 > 0 ? blue - 1 : 0;
             e.target.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
-            
+
             changeColorPicker(red, green, blue);
             break;
 
@@ -144,23 +130,23 @@ function colorDiv(e) {
             green = green + 1 < 255 ? green + 1 : 255;
             blue = blue + 1 < 255 ? blue + 1 : 255;
             e.target.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
-            
+
             changeColorPicker(red, green, blue);
             break;
     }
 }
-    
+
 function togglePainting(e) {
     let key = e.key;
-    if(key != 's' && key != 'd') 
-        return 
-    
+    if(key != 's' && key != 'd')
+        return
+
     const otherKey = key === 's' ? 'd' : 's';
 
     const divs = document.querySelectorAll('.divs');
     const info = document.querySelector(`#${key}`);
     const disableInfo = document.querySelector(`#${otherKey}`);
-    
+
     info.classList.add('selected-info');
     const exists = disableInfo.getAttribute('class');
     if (exists)
@@ -169,7 +155,7 @@ function togglePainting(e) {
     if (key === 's') {
         paintMode = "selection";
         divs.forEach( div => div.removeEventListener('mouseover', colorDiv) );
-        
+
     } else if (key === 'd') {
         paintMode = "draw";
         divs.forEach( div => div.addEventListener('mouseover', colorDiv) );
@@ -182,7 +168,7 @@ function clearGrid() {
     divs.forEach(div => div.style.backgroundColor = gridDefaultColor);
 
     defaultSelections();
-}    
+}
 
 function addEventListeners() {
     const colorPicker = document.querySelector('#penColor');
@@ -211,20 +197,33 @@ function addEventListeners() {
     document.addEventListener('keydown', togglePainting);
 }
 
+function addCellsToCanvas() {
+    for (let i = 0; i < size; i ++) {
+        for (let j = 0; j < size; j ++) {
+            let cell = document.createElement('div');
+            cell.classList.add('cell');
+            canvas.appendChild(cell);
+        }
+    }
+
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////
 // Code begins here
 ///////////////////////////////////////////////////////////////////////////////////////////
 const main = document.querySelector('main');
+const canvas = document.querySelector('.canvas');
 
-// Add a container to main 
+// Add a container to main
 const container = document.createElement('div');
 container.setAttribute('id', 'container');
 main.appendChild(container);
 
-// Draw the initial grid
-drawGrid(size);
-defaultSelections();
-addEventListeners();
+// Add cells to canvas
+addCellsToCanvas(canvas);
+styleCanvas(canvas,size);
+// defaultSelections();
+// addEventListeners();
 
 
 

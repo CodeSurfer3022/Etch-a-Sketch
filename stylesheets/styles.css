@@ -1,5 +1,25 @@
-body {
+.body {
+    margin: 0;
     height: 100vh;
     display: flex;
     flex-direction: column;
+}
+
+.header {
+    text-align: center;
+}
+
+.main {
+    flex: 1;
+}
+
+.footer {
+    text-align: center;
+}
+
+.canvas {
+    display: grid;
+    height: 500px;
+    width: 500px;
+    background: aqua;
 }
