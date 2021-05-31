@@ -12,11 +12,11 @@
 </header>
 <main class="main">
     <div class="modes">
-        <div>
-            <button id="normal" name="normal">Normal</button>
+        <div class="mode">
+            <button class="button mode__normal" name="normal">Normal</button>
         </div>
-        <div>
-            <button id="ludicrous" name="ludicrous">Ludicrous</button>
+        <div class="mode">
+            <button class="button mode__ludicrous" name="ludicrous">Ludicrous</button>
         </div>
     </div>
     <div class="canvas-area">
@@ -29,29 +29,31 @@
     </div>
     <div class="dipping-area">
         <div class="palette">
-            <div id="color-picker">
-                <label for="penColor">Color picker</label>
-                <input type="color" id="penColor" name="penColor" value="#1322ff"/>
+            <div class="palette__color-picker">
+                <label>
+                    Color picker
+                    <input class="input input__color-picker" type="color" name="color" value="#1322ff"/>
+                </label>
             </div>
-            <div>
-                <button id="darken" name="darken">Darken</button>
+            <div class="palette_side palette__water">
+                <button class="button palette__darken" name="darken">Darken</button>
             </div>
-            <div>
-                <button id="lighten" name="lighten">Lighten</button>
+            <div class="palette_side palette__black">
+                <button class="button palette__lighten" name="lighten">Lighten</button>
             </div>
         </div>
         <div class="brushes">
             <div class="brush thin">
-                <img src="assets/images/pens/pen128.png" alt="thin"/>
+                <img class="brush__img" src="assets/images/pens/pen128.png" alt="thin"/>
             </div>
             <div class="brush medium">
-                <img  src="assets/images/pens/pen64.png" alt="medium"/>
+                <img class="brush__img" src="assets/images/pens/pen64.png" alt="medium"/>
             </div>
             <div class="brush thick">
-                <img  src="assets/images/pens/pen32.png" alt="thick"/>
+                <img class="brush__img" src="assets/images/pens/pen32.png" alt="thick"/>
             </div>
             <div class="brush very-thick">
-                <img  src="assets/images/pens/pen16.png" alt="ver thick"/>
+                <img class="brush__img" src="assets/images/pens/pen16.png" alt="ver thick"/>
             </div>
         </div>
     </div>

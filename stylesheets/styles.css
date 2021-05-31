@@ -38,3 +38,12 @@
 .brushes {
     display: flex;
 }
+
+.brush {
+    height: 300px;
+}
+
+.brush__img {
+    width: auto;
+    max-height: 100%;
+}

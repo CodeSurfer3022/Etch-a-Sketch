@@ -56,19 +56,7 @@ function changeSize(e) {
     addEventListeners();
 }
 
-function changeMode(e) {
 
-    mode = e.toElement.id;
-    const btns = document.querySelectorAll('button');
-    btns.forEach(btn => {
-        if (btn.getAttribute('class') === 'selected-button') {
-            btn.removeAttribute('class');
-        }
-    });
-
-    const btn = document.querySelector(`#${mode}`);
-    btn.classList.add('selected-button');
-}
 
 
 function defaultSelections() {
@@ -158,32 +146,43 @@ function togglePainting(e) {
     }
 }
 
+/*********************************************************************************************/
+// Event handler functions for mode and brushes
+/*********************************************************************************************/
+function changeMode(e) {
 
-function addEventListeners() {
-    const colorPicker = document.querySelector('#penColor');
-    colorPicker.addEventListener('change', changeColor);
+    console.log(e);
 
-    const pens = document.querySelectorAll('#pens img');
-    pens.forEach(pen => {
-        pen.addEventListener('click', changeSize)
-    });
+    // mode = e.toElement.id;
+    // const btns = document.querySelectorAll('button');
+    // btns.forEach(btn => {
+    //     if (btn.getAttribute('class') === 'selected-button') {
+    //         btn.removeAttribute('class');
+    //     }
+    // });
+    //
+    // const btn = document.querySelector(`#${mode}`);
+    // btn.classList.add('selected-button');
+}
 
-    const clear = document.querySelector('#clear-screen');
-    clear.addEventListener('click', clearGrid);
+function selectBrush(e) {
+    console.log(e);
+}
 
-    const normal = document.querySelector('#normal');
-    normal.addEventListener('click', changeMode);
+/*********************************************************************************************/
+// Event handler functions for palette
+/*********************************************************************************************/
 
-    const ludicrous = document.querySelector('#ludicrous');
-    ludicrous.addEventListener('click', changeMode);
+function dipInPaint(e) {
+    console.log(e);
+}
 
-    const darken = document.querySelector('#darken');
-    darken.addEventListener('click', changeMode);
+function dipInWater(e) {
+    console.log(e);
+}
 
-    const lighten = document.querySelector('#lighten');
-    lighten.addEventListener('click', changeMode);
-
-    document.addEventListener('keydown', togglePainting);
+function dipInBlack(e) {
+    console.log(e);
 }
 
 /*********************************************************************************************/
@@ -218,12 +217,26 @@ function addCellsToCanvas() {
 // Code begins here
 ///////////////////////////////////////////////////////////////////////////////////////////
 const canvas = document.querySelector('.canvas');
-
 // Add cells to canvas
 addCellsToCanvas(canvas);
+// Style canvas according to chosen size
 styleCanvas(canvas,size);
-// defaultSelections();
-// addEventListeners();
 
+// Add event listeners
+const modes = document.querySelector('.modes');
+const brushes = document.querySelector('.brushes');
+modes.addEventListener('click', changeMode);
+brushes.addEventListener('click', selectBrush);
+
+// Event listeners for palette
+const colorPicker = document.querySelector('.input__color-picker');
+const water = document.querySelector('.palette__water');
+const black = document.querySelector('.palette__black');
+
+colorPicker.addEventListener('change', dipInPaint);
+water.addEventListener('click', dipInWater);
+black.addEventListener('click', dipInBlack);
+
+// defaultSelections();
 
 
