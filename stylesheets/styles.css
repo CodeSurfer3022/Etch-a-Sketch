@@ -27,12 +27,12 @@
     padding: 20px;
 }
 
-.canvas {
+.drawing-area {
     display: grid;
     height: 500px;
     width: 500px;
     margin: 0 auto;
-    background: aqua;
+    background: aliceblue;
 }
 
 .mode {

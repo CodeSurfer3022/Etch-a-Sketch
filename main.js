@@ -1,6 +1,12 @@
 /////////////////////////////////////////////////////////////////////////////////////
 
 // global variables at top with default values
+const THICKNESS = {
+    S: 128,
+    M: 64,
+    L: 32,
+    XL: 16
+}
 
 // Size of grids
 let size = 16;
@@ -18,6 +24,8 @@ let gridDefaultColor = "aliceblue";
 let red = 19;
 let green = 34;
 let blue = 255;
+
+
 
 /////////////////////////////////////////////////////////////////////////////////////
 function rgbToHex(red, green, blue) {
@@ -184,7 +192,13 @@ function changeMode(e) {
 }
 
 function selectBrush(e) {
-    console.log(e);
+    const brush = e.target;
+    const thickness = brush.getAttribute('data-thickness');
+    if(THICKNESS[thickness] === size) return;
+    size = THICKNESS[thickness];
+    console.log(size);
+    canvas.removeChild(canvas.firstElementChild);
+    drawCanvas(size);
 }
 
 /*********************************************************************************************/
@@ -208,40 +222,45 @@ function dipInBlack(e) {
 /*********************************************************************************************/
 function clearCanvas() {
     // Clear the screen area to draw fresh
-    const cells = document.querySelectorAll('.cell');
-    cells.forEach(cell => cell.style.backgroundColor = gridDefaultColor);
+    const cells = canvas.querySelectorAll('.painted');
+    cells.forEach(cell => {
+        cell.classList.remove('painted');
+        cell.style.backgroundColor = gridDefaultColor;
+    })
 
-    defaultSelections();
+    // defaultSelections();
 }
 
-function styleCanvas(canvas, size) {
-    canvas.style.cssText = `grid-template: repeat(${size}, 1fr) / repeat(${size}, 1fr);`;
-    console.log("drawing grid");
-}
+function drawCanvas(size) {
+    console.log('drawing canvas');
+    const drawingArea = document.createElement('div');
+    drawingArea.classList.add('drawing-area');
 
-function addCellsToCanvas() {
+    drawingArea.style.cssText = `grid-template: repeat(${size}, 1fr) / repeat(${size}, 1fr);`;
+
     let cell;
     for (let i = 0; i < size; i ++) {
         for (let j = 0; j < size; j ++) {
             cell = document.createElement('div');
             cell.classList.add('cell');
-            canvas.appendChild(cell);
+            drawingArea.appendChild(cell);
         }
     }
 
+    canvas.appendChild(drawingArea);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 // Code begins here
 ///////////////////////////////////////////////////////////////////////////////////////////
 const canvas = document.querySelector('.canvas');
-// Add cells to canvas
-addCellsToCanvas(canvas);
+const clear = document.querySelector('.clear-canvas');
 // Style canvas according to chosen size
-styleCanvas(canvas,size);
+drawCanvas(size);
 // Add event listeners on canvas for painting and pausing
 canvas.addEventListener('mouseover', paintOnCanvas);
 canvas.addEventListener('contextmenu', togglePaintMode);
+clear.addEventListener('click', clearCanvas)
 
 // Add event listeners
 const modes = document.querySelector('.modes');
