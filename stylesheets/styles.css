@@ -35,11 +35,20 @@
     background: aqua;
 }
 
+.mode {
+    cursor: pointer;
+}
+
+.palette {
+    cursor: pointer;
+}
+
 .brushes {
     display: flex;
 }
 
 .brush {
+    cursor: pointer;
     height: 300px;
 }
 

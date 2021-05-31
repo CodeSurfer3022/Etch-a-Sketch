@@ -9,7 +9,7 @@ let size = 16;
 let mode = "normal"
 
 // Mode of painting
-let paintMode = "selection"
+let isPainting = false;
 
 // grid default color
 let gridDefaultColor = "aliceblue";
@@ -145,6 +145,24 @@ function togglePainting(e) {
         divs.forEach( div => div.addEventListener('mouseover', colorDiv) );
     }
 }
+/*********************************************************************************************/
+// Event handler functions for mode and brushes
+/*********************************************************************************************/
+function paintOnCanvas(e) {
+    if(!isPainting) return;
+
+    const cell = e.target;
+    if(e.target.classList.contains('painted')) return;
+
+    console.log(cell);
+    cell.style.backgroundColor = `rgb(${red},${green},${blue})`;
+    cell.classList.add('painted');
+}
+
+function togglePaintMode(e) {
+    e.preventDefault();
+    isPainting = !isPainting;
+}
 
 /*********************************************************************************************/
 // Event handler functions for mode and brushes
@@ -174,7 +192,7 @@ function selectBrush(e) {
 /*********************************************************************************************/
 
 function dipInPaint(e) {
-    console.log(e);
+    console.log(e.target.value);
 }
 
 function dipInWater(e) {
@@ -221,6 +239,9 @@ const canvas = document.querySelector('.canvas');
 addCellsToCanvas(canvas);
 // Style canvas according to chosen size
 styleCanvas(canvas,size);
+// Add event listeners on canvas for painting and pausing
+canvas.addEventListener('mouseover', paintOnCanvas);
+canvas.addEventListener('contextmenu', togglePaintMode);
 
 // Add event listeners
 const modes = document.querySelector('.modes');
