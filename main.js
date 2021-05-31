@@ -70,10 +70,6 @@ function changeMode(e) {
     btn.classList.add('selected-button');
 }
 
-function styleCanvas(canvas, size) {
-    canvas.style.cssText = `grid-template: repeat(${size}, 1fr) / repeat(${size}, 1fr);`;
-    console.log("drawing grid");
-}
 
 function defaultSelections() {
     const btn = document.querySelector(`#${mode}`);
@@ -162,13 +158,6 @@ function togglePainting(e) {
     }
 }
 
-function clearGrid() {
-    // Clear the screen area to draw fresh
-    const divs = document.querySelectorAll('.divs');
-    divs.forEach(div => div.style.backgroundColor = gridDefaultColor);
-
-    defaultSelections();
-}
 
 function addEventListeners() {
     const colorPicker = document.querySelector('#penColor');
@@ -197,10 +186,27 @@ function addEventListeners() {
     document.addEventListener('keydown', togglePainting);
 }
 
+/*********************************************************************************************/
+// Canvas related functions
+/*********************************************************************************************/
+function clearCanvas() {
+    // Clear the screen area to draw fresh
+    const cells = document.querySelectorAll('.cell');
+    cells.forEach(cell => cell.style.backgroundColor = gridDefaultColor);
+
+    defaultSelections();
+}
+
+function styleCanvas(canvas, size) {
+    canvas.style.cssText = `grid-template: repeat(${size}, 1fr) / repeat(${size}, 1fr);`;
+    console.log("drawing grid");
+}
+
 function addCellsToCanvas() {
+    let cell;
     for (let i = 0; i < size; i ++) {
         for (let j = 0; j < size; j ++) {
-            let cell = document.createElement('div');
+            cell = document.createElement('div');
             cell.classList.add('cell');
             canvas.appendChild(cell);
         }
@@ -211,13 +217,7 @@ function addCellsToCanvas() {
 ///////////////////////////////////////////////////////////////////////////////////////////
 // Code begins here
 ///////////////////////////////////////////////////////////////////////////////////////////
-const main = document.querySelector('main');
 const canvas = document.querySelector('.canvas');
-
-// Add a container to main
-const container = document.createElement('div');
-container.setAttribute('id', 'container');
-main.appendChild(container);
 
 // Add cells to canvas
 addCellsToCanvas(canvas);
