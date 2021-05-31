@@ -19,29 +19,39 @@
             <button id="ludicrous" name="ludicrous">Ludicrous</button>
         </div>
     </div>
-    <div class="canvas-container">
-        <div class="canvas">
+    <div class="canvas-area">
+        <div class="canvas-container">
+            <div class="canvas">
 
+            </div>
+            <button>clear screen</button>
         </div>
     </div>
-
-    <div id="color-thickness">
-        <div id="color-picker">
-            <label for="penColor">Color picker</label>
-            <input type="color" id="penColor" name="penColor" value="#1322ff"/>
+    <div class="dipping-area">
+        <div class="palette">
+            <div id="color-picker">
+                <label for="penColor">Color picker</label>
+                <input type="color" id="penColor" name="penColor" value="#1322ff"/>
+            </div>
+            <div>
+                <button id="darken" name="darken">Darken</button>
+            </div>
+            <div>
+                <button id="lighten" name="lighten">Lighten</button>
+            </div>
         </div>
-        <div>
-            <button id="darken" name="darken">Darken</button>
-        </div>
-        <div>
-            <button id="lighten" name="lighten">Lighten</button>
-        </div>
-        <div id="pen-picker">
-            <div id="pens">
-                <img id="128" src="assets/images/pens/pen128.png"/>
-                <img id="64" src="assets/images/pens/pen64.png"/>
-                <img id="32" src="assets/images/pens/pen32.png"/>
-                <img id="16" src="assets/images/pens/pen16.png"/>
+        <div class="brushes">
+            <div class="brush thin">
+                <img src="assets/images/pens/pen128.png" alt="thin"/>
+            </div>
+            <div class="brush medium">
+                <img  src="assets/images/pens/pen64.png" alt="medium"/>
+            </div>
+            <div class="brush thick">
+                <img  src="assets/images/pens/pen32.png" alt="thick"/>
+            </div>
+            <div class="brush very-thick">
+                <img  src="assets/images/pens/pen16.png" alt="ver thick"/>
             </div>
         </div>
     </div>

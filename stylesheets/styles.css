@@ -18,9 +18,23 @@
     text-align: center;
 }
 
+.canvas-area {
+    flex: 1;
+}
+
+.canvas-container {
+    background: blueviolet;
+    padding: 20px;
+}
+
 .canvas {
     display: grid;
     height: 500px;
     width: 500px;
+    margin: 0 auto;
     background: aqua;
+}
+
+.brushes {
+    display: flex;
 }
