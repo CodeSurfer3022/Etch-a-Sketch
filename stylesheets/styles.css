@@ -24,6 +24,7 @@
 
 .canvas-container {
     background: blueviolet;
+    text-align: center;
     padding: 20px;
 }
 
@@ -36,7 +37,20 @@
 }
 
 .mode {
+    height: 150px;
+    width: 100px;
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
+}
+
+.mode__img {
+    height: 120px;
+}
+
+.mode__img__img {
+    height: auto;
+    max-width: 100%;
 }
 
 .palette {
