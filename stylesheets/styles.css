@@ -28,12 +28,17 @@
     padding: 20px;
 }
 
-.drawing-area {
+.canvas {
     display: grid;
     height: 500px;
     width: 500px;
     margin: 0 auto;
     background: aliceblue;
+    cursor: url("../assets/images/paint-brush.cur"), auto;
+}
+
+.active {
+    cursor: url("../assets/images/eraser.jpg"), auto;
 }
 
 .mode {

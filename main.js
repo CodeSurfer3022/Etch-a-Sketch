@@ -197,7 +197,7 @@ function selectBrush(e) {
     if(THICKNESS[thickness] === size) return;
     size = THICKNESS[thickness];
     console.log(size);
-    canvas.removeChild(canvas.firstElementChild);
+    removeCanvasCells();
     drawCanvas(size);
 }
 
@@ -220,6 +220,12 @@ function dipInBlack(e) {
 /*********************************************************************************************/
 // Canvas related functions
 /*********************************************************************************************/
+function removeCanvasCells() {
+    while(canvas.lastElementChild) {
+        canvas.removeChild(canvas.lastElementChild);
+    }
+}
+
 function clearCanvas() {
     // Clear the screen area to draw fresh
     const cells = canvas.querySelectorAll('.painted');
@@ -233,21 +239,17 @@ function clearCanvas() {
 
 function drawCanvas(size) {
     console.log('drawing canvas');
-    const drawingArea = document.createElement('div');
-    drawingArea.classList.add('drawing-area');
 
-    drawingArea.style.cssText = `grid-template: repeat(${size}, 1fr) / repeat(${size}, 1fr);`;
+    canvas.style.cssText = `grid-template: repeat(${size}, 1fr) / repeat(${size}, 1fr);`;
 
     let cell;
     for (let i = 0; i < size; i ++) {
         for (let j = 0; j < size; j ++) {
             cell = document.createElement('div');
             cell.classList.add('cell');
-            drawingArea.appendChild(cell);
+            canvas.appendChild(cell);
         }
     }
-
-    canvas.appendChild(drawingArea);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////
@@ -270,8 +272,8 @@ brushes.addEventListener('click', selectBrush);
 
 // Event listeners for palette
 const colorPicker = document.querySelector('.input__color-picker');
-const water = document.querySelector('.palette__water');
-const black = document.querySelector('.palette__black');
+const water = document.querySelector('.palette__color__white');
+const black = document.querySelector('.palette__color__black');
 
 colorPicker.addEventListener('change', dipInPaint);
 water.addEventListener('click', dipInWater);
