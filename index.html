@@ -5,6 +5,7 @@
     <title>Paint</title>
     <link rel="stylesheet" href="stylesheets/styles.css" type="text/css"/>
     <link rel="icon" href="assets/images/icon.png"/>
+    <script src="https://kit.fontawesome.com/48509a2691.js" crossorigin="anonymous"></script>
 </head>
 <body class="body">
 <header class="header">
@@ -32,37 +33,36 @@
     <div class="dipping-area">
         <div class="palette">
             <div class="palette__color-picker">
-                <label>
-                    Color picker
                     <input class="input input__color-picker" type="color" name="color" value="#1322ff"/>
-                </label>
             </div>
-            <div class="palette_side palette__water">
-                <button class="button palette__darken" name="darken">Darken</button>
-            </div>
-            <div class="palette_side palette__black">
-                <button class="button palette__lighten" name="lighten">Lighten</button>
+            <div class="palette__sides">
+                <div class="palette__side palette__side__white">
+                    <div class="palette__color palette__color__white"></div>
+                </div>
+                <div class="palette__side palette__side__black">
+                    <div class="palette__color palette__color__black"></div>
+                </div>
             </div>
         </div>
         <div class="brushes">
             <div class="brush">
-                <img class="brush__img brush__thin" data-thickness="S" src="assets/images/pens/pen128.png" alt="thin"/>
+                <img class="brush__img brush__thin" data-thickness="S" src="assets/images/brushes/brush-s.png" alt="thin"/>
             </div>
             <div class="brush">
-                <img class="brush__img brush__medium" data-thickness="M" src="assets/images/pens/pen64.png" alt="medium"/>
+                <img class="brush__img brush__medium" data-thickness="M" src="assets/images/brushes/brush-m.png" alt="medium"/>
             </div>
             <div class="brush">
-                <img class="brush__img brush__thick" data-thickness="L" src="assets/images/pens/pen32.png" alt="thick"/>
+                <img class="brush__img brush__thick" data-thickness="L" src="assets/images/brushes/brush-l.png" alt="thick"/>
             </div>
             <div class="brush">
-                <img class="brush__img brush__very-thick" data-thickness="XL" src="assets/images/pens/pen16.png" alt="ver thick"/>
+                <img class="brush__img brush__very-thick" data-thickness="XL" src="assets/images/brushes/brush-xl.png" alt="very thick"/>
             </div>
         </div>
     </div>
 </main>
 <footer class="footer">
     <p>Made by Chandra Prakash</p>
-    <p>Hosted with love by github</p>
+    <p>Hosted with <i class="fas fa-heart"></i> by github</p>
 </footer>
 <script src="main.js"></script>
 </body>

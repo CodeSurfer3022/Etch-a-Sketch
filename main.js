@@ -71,10 +71,10 @@ function defaultSelections() {
     const btn = document.querySelector(`#${mode}`);
     btn.classList.add('selected-button');
 
-    const pens = document.querySelectorAll('#pens img');
-    pens.forEach(pen => {
-        if (pen.getAttribute('class') === 'selected-pen') {
-            pen.removeAttribute('class');
+    const brushes = document.querySelectorAll('#brushes img');
+    brushes.forEach(brush => {
+        if (brush.getAttribute('class') === 'selected-pen') {
+            brush.removeAttribute('class');
         }
     })
 
