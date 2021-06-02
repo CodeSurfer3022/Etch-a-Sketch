@@ -34,11 +34,18 @@
     width: 500px;
     margin: 0 auto;
     background: aliceblue;
-    cursor: url("../assets/images/paint-brush.cur"), auto;
 }
 
-.active {
-    cursor: url("../assets/images/eraser.jpg"), auto;
+.painting {
+    cursor: url("../assets/images/cursors/brush3.cur"), auto;
+}
+
+.action {
+    cursor: pointer;
+}
+
+.cleaning {
+    cursor: url("../assets/images/cursors/eraser.cur"), auto;
 }
 
 .mode {
@@ -82,4 +89,14 @@
 .brush__img {
     width: auto;
     max-height: 100%;
+}
+
+.action {
+    height: 100px;
+    width: 100px;
+}
+
+.action__img {
+    height: auto;
+    max-width: 100%;
 }
