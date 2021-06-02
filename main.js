@@ -27,90 +27,22 @@ let blue = 102;
 
 /////////////////////////////////////////////////////////////////////////////////////
 function rgbToHex(red, green, blue) {
+    let r,g,b;
     r = red.toString(16);
     g = green.toString(16);
     b = blue.toString(16);
 
-    r = r.length == 1 ? "0" + r : r;
-    g = g.length == 1 ? "0" + g : g;
-    b = b.length == 1 ? "0" + b : b;
+    r = r.length === 1 ? "0" + r : r;
+    g = g.length === 1 ? "0" + g : g;
+    b = b.length === 1 ? "0" + b : b;
 
     return '#' + r + g + b;
 }
 
-
-function changeColor(e) {
-    const selectedColor = e.target.value;
-    red = parseInt(selectedColor.slice(1,3), 16);
-    green = parseInt(selectedColor.slice(3,5), 16);
-    blue = parseInt(selectedColor.slice(5,7), 16);
-}
-
 function changeColorPicker(red, green, blue) {
-    let hexColor = rgbToHex(red, green, blue);
-    console.log(hexColor);
-    colorPicker.value = hexColor;
+    colorPicker.value = rgbToHex(red, green, blue);
 }
 
-function changeSize(e) {
-    size= e.toElement.id;
-    let oldGrid = document.querySelector('#grid');
-    container.removeChild(oldGrid);
-    drawGrid(size);
-    defaultSelections();
-    addEventListeners();
-}
-
-function defaultSelections() {
-    const btn = document.querySelector(`#${mode}`);
-    btn.classList.add('selected-button');
-
-    const brushes = document.querySelectorAll('#brushes img');
-    brushes.forEach(brush => {
-        if (brush.getAttribute('class') === 'selected-pen') {
-            brush.removeAttribute('class');
-        }
-    })
-
-    const selectedPen = document.querySelector(`#pens img[id = '${size}']`);
-    selectedPen.classList.add('selected-pen');
-
-    const key = paintMode === 'selection' ? 's' : 'd';
-    const otherKey = key === 's' ? 'd' : 's';
-    const info = document.querySelector(`#${key}`);
-    const disableInfo = document.querySelector(`#${otherKey}`);
-
-    info.classList.add('selected-info');
-    const exists = disableInfo.getAttribute('class');
-    if (exists)
-        disableInfo.classList.remove('selected-info');
-}
-
-function togglePainting(e) {
-    let key = e.key;
-    if(key != 's' && key != 'd')
-        return
-
-    const otherKey = key === 's' ? 'd' : 's';
-
-    const divs = document.querySelectorAll('.divs');
-    const info = document.querySelector(`#${key}`);
-    const disableInfo = document.querySelector(`#${otherKey}`);
-
-    info.classList.add('selected-info');
-    const exists = disableInfo.getAttribute('class');
-    if (exists)
-        disableInfo.classList.remove('selected-info');
-
-    if (key === 's') {
-        paintMode = "selection";
-        divs.forEach( div => div.removeEventListener('mouseover', colorDiv) );
-
-    } else if (key === 'd') {
-        paintMode = "draw";
-        divs.forEach( div => div.addEventListener('mouseover', colorDiv) );
-    }
-}
 /*********************************************************************************************/
 // Event handler functions for mode and brushes
 /*********************************************************************************************/
@@ -149,20 +81,12 @@ function togglePaintMode(e) {
 /*********************************************************************************************/
 // Event handler functions for mode and brushes
 /*********************************************************************************************/
-function changeMode(e) {
-
-    console.log(e);
-
-    // mode = e.toElement.id;
-    // const btns = document.querySelectorAll('button');
-    // btns.forEach(btn => {
-    //     if (btn.getAttribute('class') === 'selected-button') {
-    //         btn.removeAttribute('class');
-    //     }
-    // });
-    //
-    // const btn = document.querySelector(`#${mode}`);
-    // btn.classList.add('selected-button');
+function setMode(e) {
+    modeClass = e.currentTarget.classList[1];
+    let regex = /mode--(.*)/g;
+    let arr = regex.exec(modeClass);
+    mode = arr[1];
+    console.log(modeClass, mode);
 }
 
 function selectBrush(e) {
@@ -179,7 +103,7 @@ function selectBrush(e) {
 // Event handler functions for palette
 /*********************************************************************************************/
 
-function dipInPaint(e) {
+function selectPaint(e) {
     const selectedColor = e.target.value;
     red = parseInt(selectedColor.slice(1,3), 16);
     green = parseInt(selectedColor.slice(3,5), 16);
@@ -241,20 +165,17 @@ canvas.addEventListener('mouseover', paintOnCanvas);
 canvas.addEventListener('contextmenu', togglePaintMode);
 clear.addEventListener('click', clearCanvas)
 
-// Add event listeners
-const modes = document.querySelector('.modes');
+// Add event listeners for modes and brushes
+const modes = document.querySelectorAll('.mode');
+modes.forEach(mode => mode.addEventListener('click', setMode));
+
 const brushes = document.querySelector('.brushes');
-modes.addEventListener('click', changeMode);
 brushes.addEventListener('click', selectBrush);
 
 // Event listeners for palette
 const colorPicker = document.querySelector('.input__color-picker');
-const water = document.querySelector('.palette__color__white');
-const black = document.querySelector('.palette__color__black');
 
-colorPicker.addEventListener('change', dipInPaint);
-water.addEventListener('click', dipInWater);
-black.addEventListener('click', dipInBlack);
+colorPicker.addEventListener('change', selectPaint);
 
 // defaultSelections();
 

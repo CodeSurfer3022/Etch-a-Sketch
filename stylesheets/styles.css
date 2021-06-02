@@ -58,10 +58,6 @@
     max-width: 100%;
 }
 
-.palette {
-    cursor: pointer;
-}
-
 .palette__color-picker {
     text-align: center;
 }
@@ -71,33 +67,7 @@
     padding: 0;
     height: 50px;
     width: 50px;
-}
-
-.palette__sides {
-    display: flex;
-}
-
-.palette__side {
-    height: 50px;
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.palette__color {
-    height: 40px;
-    width: 40px;
-}
-
-.palette__color__white {
-    background: white;
-    box-shadow: 0 0 2px 2px gray;
-}
-
-.palette__color__black {
-    background: black;
-    box-shadow: 0 0 2px 2px #b1b1b1;
+    cursor: pointer;
 }
 
 .brushes {
