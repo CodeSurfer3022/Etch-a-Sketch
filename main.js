@@ -21,11 +21,9 @@ let isPainting = false;
 let gridDefaultColor = "aliceblue";
 
 // Color components
-let red = 19;
-let green = 34;
-let blue = 255;
-
-
+let red = 255;
+let green = 0;
+let blue = 102;
 
 /////////////////////////////////////////////////////////////////////////////////////
 function rgbToHex(red, green, blue) {
@@ -49,8 +47,7 @@ function changeColor(e) {
 }
 
 function changeColorPicker(red, green, blue) {
-    hexColor = rgbToHex(red, green, blue);
-    const colorPicker = document.querySelector('#penColor');
+    let hexColor = rgbToHex(red, green, blue);
     console.log(hexColor);
     colorPicker.value = hexColor;
 }
@@ -63,9 +60,6 @@ function changeSize(e) {
     defaultSelections();
     addEventListeners();
 }
-
-
-
 
 function defaultSelections() {
     const btn = document.querySelector(`#${mode}`);
@@ -90,42 +84,6 @@ function defaultSelections() {
     const exists = disableInfo.getAttribute('class');
     if (exists)
         disableInfo.classList.remove('selected-info');
-}
-
-
-function colorDiv(e) {
-    switch(mode) {
-        case "normal":
-            e.target.style.backgroundColor = `rgb(${red},${green},${blue})`;
-            break;
-
-        case "ludicrous":
-            red = Math.floor(Math.random() * 256);
-            green = Math.floor(Math.random() * 256);
-            blue = Math.floor(Math.random() * 256);
-            e.target.style.backgroundColor = `rgb(${red},${green},${blue})`;
-
-            changeColorPicker(red, green, blue);
-            break;
-
-        case "darken":
-            red = red - 1 > 0 ? red - 1 : 0;
-            green = green - 1 > 0 ? green - 1 : 0;
-            blue = blue - 1 > 0 ? blue - 1 : 0;
-            e.target.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
-
-            changeColorPicker(red, green, blue);
-            break;
-
-        case "lighten":
-            red = red + 1 < 255 ? red + 1 : 255;
-            green = green + 1 < 255 ? green + 1 : 255;
-            blue = blue + 1 < 255 ? blue + 1 : 255;
-            e.target.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
-
-            changeColorPicker(red, green, blue);
-            break;
-    }
 }
 
 function togglePainting(e) {
@@ -160,11 +118,27 @@ function paintOnCanvas(e) {
     if(!isPainting) return;
 
     const cell = e.target;
-    if(e.target.classList.contains('painted')) return;
 
-    console.log(cell);
-    cell.style.backgroundColor = `rgb(${red},${green},${blue})`;
     cell.classList.add('painted');
+    switch(mode) {
+        case "ludicrous":
+            red = Math.floor(Math.random() * 256);
+            green = Math.floor(Math.random() * 256);
+            blue = Math.floor(Math.random() * 256);
+            break;
+        case "darken":
+            red = red - 1 > 0 ? red - 1 : 0;
+            green = green - 1 > 0 ? green - 1 : 0;
+            blue = blue - 1 > 0 ? blue - 1 : 0;
+            break;
+        case "lighten":
+            red = red + 1 < 255 ? red + 1 : 255;
+            green = green + 1 < 255 ? green + 1 : 255;
+            blue = blue + 1 < 255 ? blue + 1 : 255;
+            break;
+    }
+    changeColorPicker(red, green, blue);
+    cell.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
 }
 
 function togglePaintMode(e) {
@@ -206,15 +180,18 @@ function selectBrush(e) {
 /*********************************************************************************************/
 
 function dipInPaint(e) {
-    console.log(e.target.value);
+    const selectedColor = e.target.value;
+    red = parseInt(selectedColor.slice(1,3), 16);
+    green = parseInt(selectedColor.slice(3,5), 16);
+    blue = parseInt(selectedColor.slice(5,7), 16);
 }
 
 function dipInWater(e) {
-    console.log(e);
+    mode = "lighten";
 }
 
 function dipInBlack(e) {
-    console.log(e);
+    mode = "darken";
 }
 
 /*********************************************************************************************/
