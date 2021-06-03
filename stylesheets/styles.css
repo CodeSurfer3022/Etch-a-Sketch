@@ -20,19 +20,26 @@
 
 .canvas-area {
     flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .canvas-container {
     background: blueviolet;
     text-align: center;
-    padding: 20px;
+    height: 600px;
+    width: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .canvas {
     display: grid;
-    height: 500px;
-    width: 500px;
-    margin: 0 auto;
+    height: 80%;
+    width: 80%;
     background: aliceblue;
 }
 
@@ -72,8 +79,8 @@
 .input__color-picker {
     border: none;
     padding: 0;
-    height: 50px;
-    width: 50px;
+    height: 100px;
+    width: 150px;
     cursor: pointer;
 }
 

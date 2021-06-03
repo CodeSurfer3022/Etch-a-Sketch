@@ -99,7 +99,7 @@ function selectPaint(e) {
 // Event handler functions for mode and brushes
 /*********************************************************************************************/
 function setMode(e) {
-    if(currentAction === 'cleaning') return;
+  if (currentAction === 'cleaning') return;
   let modeClass = e.currentTarget.classList[1];
   let regex = /mode--(.*)/g;
   let arr = regex.exec(modeClass);
@@ -129,13 +129,14 @@ function setCurrentAction(e) {
 }
 
 function toggleCurrentAction(e) {
-    e.preventDefault();
-    isCurrentActionPaused = !isCurrentActionPaused;
-    if(!isCurrentActionPaused) {
-        canvas.classList.add(currentAction);
-    } else {
-        canvas.classList.remove(currentAction);
-    }
+  e.preventDefault();
+  if (currentAction === 'idle') return;
+  isCurrentActionPaused = !isCurrentActionPaused;
+  if (!isCurrentActionPaused) {
+    canvas.classList.add(currentAction);
+  } else {
+    canvas.classList.remove(currentAction);
+  }
 }
 
 /*********************************************************************************************/
