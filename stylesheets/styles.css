@@ -1,12 +1,23 @@
+* {
+    box-sizing: border-box;
+}
+
 .body {
     margin: 0;
     height: 100vh;
     display: flex;
     flex-direction: column;
+    font-family: "Helvetica Neue", sans-serif;
 }
 
 .header {
     text-align: center;
+}
+
+.title {
+    font-weight: 400;
+    letter-spacing: 1rem;
+    color: #e469ff;
 }
 
 .main {
@@ -15,7 +26,14 @@
 }
 
 .footer {
+    margin-top: 20px;
     text-align: center;
+    background: linear-gradient(35deg, #CCFFFF, #FFCCCC);
+}
+
+.footer-text {
+    margin: 10px;
+    color: hotpink;
 }
 
 .canvas-area {
@@ -38,8 +56,8 @@
 
 .canvas {
     display: grid;
-    height: 80%;
-    width: 80%;
+    height: 90%;
+    width: 98%;
     background: aliceblue;
 }
 
@@ -67,7 +85,7 @@
 .modes, .accessories {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -80,20 +98,33 @@
     width: 100px;
     cursor: pointer;
     display: flex;
+    border: 1px solid black;
+    text-align: center;
+    border-radius: 5px;
     flex-direction: column;
 }
 
 .mode__img {
     height: 120px;
+    border-bottom: 1px solid black;
 }
 
 .mode__img__img {
-    height: auto;
+    max-height: 100%;
     max-width: 100%;
+}
+
+.mode-name__name {
+    margin: 0;
 }
 
 .palette__color-picker {
     text-align: center;
+}
+
+.color-picker__description {
+    margin: 0;
+    font-size: 1.5rem;
 }
 
 .input__color-picker {
@@ -121,6 +152,7 @@
 .action {
     height: 100px;
     width: 100px;
+    border: 1px solid black;
 }
 
 .action__img {
