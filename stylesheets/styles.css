@@ -18,6 +18,7 @@
     font-weight: 400;
     letter-spacing: 1rem;
     color: #e469ff;
+    margin: 10px;
 }
 
 .main {
@@ -26,28 +27,25 @@
 }
 
 .footer {
-    margin-top: 20px;
     text-align: center;
     background: linear-gradient(35deg, #CCFFFF, #FFCCCC);
 }
 
 .footer-text {
-    margin: 10px;
+    margin: 5px;
+    font-size: 0.8rem;
+    letter-spacing: 5px;
     color: hotpink;
 }
 
 .canvas-area {
     flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .canvas-container {
-    background: blueviolet;
+    background: linear-gradient(35deg, red, blue);
     text-align: center;
-    height: 600px;
-    width: 700px;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -56,14 +54,15 @@
 
 .canvas {
     display: grid;
-    height: 90%;
-    width: 98%;
+    height: 600px;
+    width: 600px;
+    margin-top: 10px;
     background: aliceblue;
 }
 
 .clear-canvas {
-    margin-top: 10px;
     cursor: pointer;
+    margin: 10px;
 }
 
 .painting {
@@ -85,8 +84,10 @@
 .modes, .accessories {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
+    flex: 0 180px;
+    /*padding: 5px;*/
 }
 
 .modes__hue {
@@ -95,18 +96,27 @@
 
 .mode {
     height: 150px;
-    width: 100px;
+    width: 120px;
     cursor: pointer;
     display: flex;
-    border: 1px solid black;
+    box-shadow: 2px 3px 3px 3px lightgray;
     text-align: center;
     border-radius: 5px;
     flex-direction: column;
 }
 
+.mode__hue {
+    height: 80px;
+    width: 60px;
+    margin: 5px;
+}
+
 .mode__img {
     height: 120px;
-    border-bottom: 1px solid black;
+}
+
+.mode__hue__img {
+    height: 60px;
 }
 
 .mode__img__img {
@@ -114,8 +124,19 @@
     max-width: 100%;
 }
 
+.mode__hue__img__img {
+    max-height: 100%;
+    max-width: 100%;
+}
+
 .mode-name__name {
     margin: 0;
+    font-size: 1.5rem;
+}
+
+.mode-hue__name__name {
+    margin: 0;
+    font-size: 15px;
 }
 
 .palette__color-picker {
@@ -130,8 +151,8 @@
 .input__color-picker {
     border: none;
     padding: 0;
-    height: 100px;
-    width: 150px;
+    height: 80px;
+    width: 120px;
     cursor: pointer;
 }
 
@@ -150,12 +171,16 @@
 }
 
 .action {
-    height: 100px;
-    width: 100px;
-    border: 1px solid black;
+    height: 70px;
+    width: 75px;
+    box-shadow: 0 0 2px 2px lightgray;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+    text-align: center;
 }
 
 .action__img {
-    height: auto;
+    max-height: 100%;
     max-width: 100%;
 }
