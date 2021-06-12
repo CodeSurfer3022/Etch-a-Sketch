@@ -15,9 +15,7 @@
 }
 
 .title {
-    font-weight: 400;
     letter-spacing: 1rem;
-    color: #e469ff;
     margin: 10px;
 }
 
@@ -45,7 +43,8 @@
 .canvas-container {
     background: linear-gradient(35deg, red, blue);
     text-align: center;
-    margin: 0 auto;
+    height: 95%;
+    margin: 10px auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -53,10 +52,10 @@
 }
 
 .canvas {
+    margin-top: 3s0px;
     display: grid;
-    height: 600px;
-    width: 600px;
-    margin-top: 10px;
+    height: 90%;
+    width: 90%;
     background: aliceblue;
 }
 
@@ -86,8 +85,11 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    flex: 0 180px;
-    /*padding: 5px;*/
+    flex: 0 220px;
+}
+
+.modes {
+    padding: 80px 0;
 }
 
 .modes__hue {
@@ -106,9 +108,11 @@
 }
 
 .mode__hue {
-    height: 80px;
-    width: 60px;
+    height: 90px;
+    width: 80px;
     margin: 5px;
+    padding: 5px;
+    border: 1px solid black;
 }
 
 .mode__img {
@@ -136,7 +140,7 @@
 
 .mode-hue__name__name {
     margin: 0;
-    font-size: 15px;
+    font-size: 1rem;
 }
 
 .palette__color-picker {
@@ -171,8 +175,8 @@
 }
 
 .action {
-    height: 70px;
-    width: 75px;
+    height: 75px;
+    width: 80px;
     box-shadow: 0 0 2px 2px lightgray;
     border-radius: 5px;
     padding: 5px;
