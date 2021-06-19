@@ -72,6 +72,12 @@
     display: flex;
 }
 
+.action--active {
+    border-style: solid;
+    border-width: 3px;
+    border-image: linear-gradient(45deg, blue, red) 1;
+}
+
 .action {
     cursor: pointer;
 }
@@ -107,12 +113,17 @@
     flex-direction: column;
 }
 
+.mode--active {
+    border-style: solid;
+    border-width: 3px;
+    border-image: linear-gradient(45deg, blue, red) 1;
+}
+
 .mode__hue {
     height: 90px;
     width: 80px;
     margin: 5px;
     padding: 5px;
-    border: 1px solid black;
 }
 
 .mode__img {

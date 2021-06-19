@@ -98,13 +98,19 @@ function selectPaint(e) {
 /*********************************************************************************************/
 // Event handler functions for mode and brushes
 /*********************************************************************************************/
+function highlightMode(modeDiv) {
+  // check if any mode div is already highlighted
+  const oldActive = document.querySelector('.mode--active');
+  if(oldActive) oldActive.classList.remove('mode--active');
+  modeDiv.classList.add('mode--active');
+}
+
 function setMode(e) {
   if (currentAction === 'cleaning') return;
-  let modeClass = e.currentTarget.classList[1];
-  let regex = /mode--(.*)/g;
-  let arr = regex.exec(modeClass);
-  mode = arr[1];
-  console.log(modeClass, mode);
+  const modeDiv = e.currentTarget;
+  mode = modeDiv.getAttribute('data-mode');
+  highlightMode(modeDiv);
+  console.log(mode, modeDiv);
 }
 
 function selectBrush(e) {
@@ -120,11 +126,17 @@ function selectBrush(e) {
 /*********************************************************************************************/
 // Event handler functions for actions
 /*********************************************************************************************/
+function highlightAction(actionDiv) {
+  // check if any mode div is already highlighted
+  const oldActive = document.querySelector('.action--active');
+  if(oldActive) oldActive.classList.remove('action--active');
+  actionDiv.classList.add('action--active');
+}
+
 function setCurrentAction(e) {
-  let actionClass = e.currentTarget.classList[1];
-  let regex = /action--(.*)/g;
-  let arr = regex.exec(actionClass);
-  currentAction = arr[1];
+  const actionDiv = e.currentTarget;
+  currentAction = actionDiv.getAttribute('data-action');
+  highlightAction(actionDiv);
   console.log(currentAction);
 }
 
